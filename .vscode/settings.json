@@ -1,0 +1,9 @@
+{
+  "files.eol": "\n",
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "editor.formatOnSave": true,
+  "typescript.updateImportsOnFileMove.enabled": "never",
+  "stylelint.configOverrides": {
+    "ignoreFiles": ["**/*.tsx"]
+  }
+}

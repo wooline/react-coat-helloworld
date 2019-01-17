@@ -1,0 +1,17 @@
+{
+  "url": "get--ajax-videos-(\\w+)",
+  "statusCode": 200,
+  "statusMessage": "OK",
+  "headers": {
+    "x-powered-by": "Express",
+    "content-type": "application/json; charset=utf-8",
+    "connection": "close"
+  },
+  "response": {
+    "id": "${1}",
+    "title": "住无锡318文化大院，游灵山小镇拈花湾",
+    "hot": 521,
+    "coverUrl": "imgs/12.jpg",
+    "videoUrl": "imgs/12.jpg"
+  }
+}

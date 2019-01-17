@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="$$CLIENT_PUBLIC_PATH$$favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <title>React App</title>
+    <style>
+      html {
+        margin: 0;
+        padding: 0;
+        background: #333;
+        height: 100%;
+      }
+
+      body {
+        position: relative;
+        height: 100%;
+        background: #fff;
+        padding: 0;
+        margin: 0 auto !important;
+        overflow-x: hidden;
+      }
+
+      #root {
+        height: 100%;
+      }
+
+      @keyframes g-init-loading-ball {
+        0% {
+          transform: translate(-50%, -50%) scale(0.5);
+        }
+
+        50% {
+          opacity: 0.5;
+          transform: translate(-50%, -50%) scale(1);
+        }
+
+        100% {
+          transform: translate(-50%, -50%) scale(0.5);
+        }
+      }
+
+      @keyframes g-init-loading-text {
+        0% {
+          opacity: 0.5;
+        }
+
+        50% {
+          opacity: 1;
+        }
+
+        100% {
+          opacity: 0.5;
+        }
+      }
+
+      .g-init-loading {
+        display: block;
+        position: fixed;
+        z-index: 2000;
+        height: 100%;
+        top: 0;
+        background: #eee;
+      }
+
+      .g-init-loading::before {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        content: ".";
+        font-size: 0;
+        width: 50px;
+        height: 50px;
+        background: #ddd;
+        border-radius: 50px;
+        transform: translate(-50%, -50%) scale(0.5);
+        animation: g-init-loading-ball 1s infinite;
+      }
+
+      .g-init-loading::after {
+        font-size: 12px;
+        color: #666;
+        position: absolute;
+        content: "Loading..";
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        animation: g-init-loading-text 1s infinite;
+      }
+
+      .g-doc-width {
+        width: 100%;
+      }
+    </style>
+
+    <script type="text/javascript">
+      // var vConsole = new VConsole();
+      (function() {
+        function setStyle(cssString) {
+          var style = document.createElement("style");
+          style.setAttribute("type", "text/css");
+          if (style.styleSheet) {
+            style.styleSheet.cssText = cssString;
+          } else {
+            var cssNode = document.createTextNode(cssString);
+            style.appendChild(cssNode);
+          }
+          var heads = document.getElementsByTagName("head");
+          if (heads.length) {
+            heads[0].appendChild(style);
+          } else {
+            document.documentElement.appendChild(style);
+          }
+        }
+        function setSize() {
+          var cwidth = document.documentElement.clientWidth;
+          var cheight = document.documentElement.clientHeight;
+          var maxWidth = 500;
+          var width = Math.min(maxWidth, cwidth);
+          var rem = width / 10;
+          var styleArr = [];
+          styleArr.push("html{font-size:" + rem + "px;}");
+          styleArr.push(".g-doc-width{max-width:" + maxWidth + "px;}");
+          setStyle(styleArr.join(" "));
+        }
+        setSize();
+
+        var timer;
+        window.addEventListener(
+          "resize",
+          function() {
+            if (!timer) {
+              timer = setTimeout(function() {
+                setSize();
+                timer = null;
+              }, 1000);
+            }
+          },
+          false
+        );
+      })();
+    </script>
+    <!-- {react-coat-init-env} -->
+    <script>
+      function getInitEnv(env) {
+        return $$ENV$$;
+      }
+    </script>
+  </head>
+
+  <body class="g-doc-width">
+    <div id="g-init-loading" class="g-init-loading g-doc-width"></div>
+    <!-- {react-coat-response-chunk} -->
+    <div id="root"><!-- {react-coat-html} --></div>
+    <!-- {react-coat-script} -->
+  </body>
+</html>

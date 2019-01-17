@@ -1,0 +1,20 @@
+{
+  "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
+  "rulesDirectory": ["tslint-plugin-prettier"],
+  "rules": {
+    "prettier": true,
+    "no-var-requires": false,
+    "max-classes-per-file": false,
+    "jsx-no-multiline-js": false,
+    "object-literal-sort-keys": false,
+    "interface-over-type-literal": false,
+    "interface-name": [true, "never-prefix"],
+    "no-console": false,
+    "jsx-no-lambda": false,
+    "member-ordering": false,
+    "member-access": true
+  },
+  "linterOptions": {
+    "exclude": [] //"scripts/**/*"
+  }
+}

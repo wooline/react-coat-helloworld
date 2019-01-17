@@ -1,0 +1,66 @@
+{
+  "url": "get--ajax-photos\\$page=1&pageSize=10&title=.+",
+  "statusCode": 200,
+  "statusMessage": "OK",
+  "headers": {
+    "x-delay": 1000,
+    "x-powered-by": "Express",
+    "content-type": "application/json; charset=utf-8",
+    "connection": "close"
+  },
+  "response": {
+    "listSummary": {
+      "page": 1,
+      "pageSize": 5,
+      "totalItems": 10,
+      "totalPages": 2
+    },
+    "listItems": [
+      {
+        "id": "10",
+        "title": "海天佛国普陀山+紫竹林+南海观音",
+        "departure": "苏州",
+        "type": "跟团游",
+        "price": 3075,
+        "hot": 882,
+        "coverUrl": "imgs/10.jpg"
+      },
+      {
+        "id": "3",
+        "title": "厦门+鼓浪屿自驾4日游",
+        "departure": "苏州",
+        "type": "自驾游",
+        "price": 800,
+        "hot": 6895,
+        "coverUrl": "imgs/3.jpg"
+      },
+      {
+        "id": "9",
+        "title": "黄山+宏村+新安江大巴3日跟团游",
+        "departure": "黄山",
+        "type": "自助游",
+        "price": 6581,
+        "hot": 8942,
+        "coverUrl": "imgs/9.jpg"
+      },
+      {
+        "id": "1",
+        "title": "新加坡+吉隆坡+马六甲6或7日跟团游",
+        "departure": "无锡",
+        "type": "跟团游",
+        "price": 2499,
+        "hot": 265,
+        "coverUrl": "imgs/1.jpg"
+      },
+      {
+        "id": "2",
+        "title": "芽庄4晚5日跟团游",
+        "departure": "常州",
+        "type": "跟团游",
+        "price": 1582,
+        "hot": 36,
+        "coverUrl": "imgs/2.jpg"
+      }
+    ]
+  }
+}

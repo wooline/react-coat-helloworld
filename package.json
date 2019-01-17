@@ -1,0 +1,91 @@
+{
+  "name": "react-coat-spa-demo",
+  "version": "4.0.0",
+  "description": "a demo of the react-coat for SPA",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development node scripts/start.js",
+    "build": "cross-env NODE_ENV=production node scripts/build.js",
+    "prod-express-demo": "npm run build && node scripts/demo.js",
+    "gen-icon": "node scripts/gen-icon.js",
+    "demo-build": "cross-env NODE_ENV=production WEBSITE=demo node scripts/build.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wooline/react-coat-spa-demo.git"
+  },
+  "author": "wooline <wooline@qq.com>",
+  "license": "MIT",
+  "peerDependencies": {
+    "axios": "^0.15.0",
+    "babel-eslint": "^10.0.0",
+    "chalk": "^2.0.0",
+    "cross-env": "^5.0.0",
+    "css-loader": "^1.0.0",
+    "eslint": "^5.0.0",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-config-prettier": "^3.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "express": "^4.0.0",
+    "file-loader": "^2.0.0",
+    "fs-extra": "^7.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "html-replace-webpack-plugin": "^2.5.0",
+    "less": "^3.5.0",
+    "less-loader": "^4.0.0",
+    "mini-css-extract-plugin": "^0.4.0",
+    "micromatch": "^3.0.0",
+    "postcss-flexbugs-fixes": "^4.1.0",
+    "postcss-loader": "^3.0.0",
+    "postcss-preset-env": "^6.1.0",
+    "postcss-safe-parser": "^4.0.0",
+    "postcss-pxtorem": "^4.0.0",
+    "prettier": "^1.15.0",
+    "fork-ts-checker-webpack-plugin": "^0.4.10",
+    "style-loader": "^0.23.0",
+    "stylelint": "^9.8.0",
+    "stylelint-config-standard": "^18.2.0",
+    "stylelint-webpack-plugin": "^0.10.0",
+    "ts-loader": "^5.2.0",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.15.0",
+    "tslint-plugin-prettier": "^2.0.0",
+    "tslint-react": "^3.6.0",
+    "typescript": "^3.2.0",
+    "url-loader": "^1.1.0",
+    "webpack": "^4.0.0",
+    "webpack-dev-server": "^3.0.0",
+    "webpack-manifest-plugin": "^2.0.0",
+    "yargs": "^12.0.0"
+  },
+  "devDependencies": {
+    "react-coat-dev-utils": "^1.0.1",
+    "react-coat-dev-pkg": "^1.0.2",
+    "typescript": "^3.2.2"
+  },
+  "dependencies": {
+    "antd-mobile": "~2.2.6",
+    "deep-extend": "~0.6.0",
+    "rc-form": "~2.2.7",
+    "react-coat": "~4.0.0",
+    "react-coat-pkg": "~4.0.1",
+    "ts-import-plugin": "~1.5.5"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11"
+  ],
+  "devServer": {
+    "url": "http://localhost:7445",
+    "mock": true,
+    "proxy": {
+      "/ajax/**": {
+        "target": "http://localhost:7446/",
+        "secure": false,
+        "changeOrigin": true
+      }
+    }
+  }
+}
