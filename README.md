@@ -1,4 +1,4 @@
-- react-coat 同时支持`浏览器渲染(SPA)`和`服务器渲染(SSR)`，本 Demo 仅演示`浏览器渲染`，请先花点时间了解一下：[react-coat v4.0](https://github.com/wooline/react-coat)
+- react-coat 同时支持`浏览器渲染(SPA)`和`服务器渲染(SSR)`，本 Demo 仅演示`浏览器渲染`，请先了解一下：[react-coat v4.0](https://github.com/wooline/react-coat)
 
 - react-coat4.0 推出之后，不少网友反映附带的 2 个 Demo 写得太复杂。主要问题是：
 
@@ -56,6 +56,58 @@ npm install
 - 不使用 css module，用模块化命名空间保证 css 不冲突
 - 采用 editorconfig > prettier 作统一的风格配置，建议使用 vscode 作为 IDE，并安装 prettier 插件以自动格式化
 - 采用 tslint、eslint、stylelint 作代码检查
+
+#### 约定规则静态检查
+
+react-coat 中很多是用约定代替了配置，但如果开发者粗心大意违返了约定，将导致程序出现错误，为了提前感知这些违返约定，本 demo 作了一些静态代码扫描 check 操作。目前仅支持少量规则，更多更严格 check 将在后续补充。
+目前支持的有：
+
+- @reducer 装饰器修饰的方法必须返回 State 类型
+- @effect 装饰器修饰的方法必须是 async 函数
+- 在 ModuleActionHandlers 中，所有 public 方法必须使用@reducer 或 @effect 装饰，否则请使用 protected 或 private
+
+#### PeerDependencies
+
+开发环境需要很多的 dependencies，你可以自行安装特定版本，如果特殊要求，建议本站提供的 **react-coat-pkg** 以及 **react-coat-dev-pkg**，它们已经包含了绝大部分 dependencies。
+
+#### Mock 服务器
+
+运行 Demo 需要从后台 api 中获取数据，通常得另外开一个 api 服务器，为此本 Demo 特意写了一个简单的 mock 中间件来合并到 webpackDevServer 中。
+
+为什么不用 mock.js？
+
+- 想生成贴合实际有意义的假数据，而不是一堆占位数据
+- 想模似真实的 http 请求和返回
+
+> 简单功能：
+
+- 记录真实 api：如果启用`记录`功能，该中间件会拦截真实 api 的 Resphonse，将其以文件形式保存在/mock/temp/目录下
+- mock 假数据：在/mock/下以文件形式创建一个 Resphonse、或者将/mock/temp/下的 api 历史记录 copy 到/mock/下，如果文件名与请求 URL 匹配，则直接拦截并返回该文件内容。
+- 文件名与请求 URL 匹配规则：由于文件名不能存特殊字符，所以 url 中的特殊字符简单替换为-，为了支持正则，可以采用 base64 后的正则作为文件名
+
+#### CSS 及图片的模块化
+
+本 Demo 并不采用 CSS Module 来进行 css 模块化，因为编译之后可读性不好，而且增加复杂度和编译时间。使用统一的 css 命名空间约定，我们也可以很简单的防止 css 命名冲突。
+
+我们将 css 分为三大类：`全局(global)CSS、模块(Module)CSS、组件(Component)CSS`
+
+- `全局(global)CSS`：跨模块、跨组件使用的公共 css，我们约定以"`g-`"开头，存放到/src/asset/css/global.css
+- `模块(Module)CSS`：某模块私有使用的 css，我们约定以"`模块名-`"开头，跟随模块文件夹存放
+  - `视图(View)CSS`：在模块 css 中，如果某些 css 仅为某个 view 私有使用，我们约定以"`模块名-视图名-`"开头，跟随视图文件夹存放
+- `组件(Component)CSS`：某组件私有使用的 css，我们约定以"`comp-组件名-`"开头，跟随组件文件夹存放
+
+类似的，对于项目中用到的图片，如果是跨模块、跨组件使用的，我们放到/src/asset/imgs/，而对于其它`模块私有、视图私有、组件私有`，我们跟随它们各自的文件夹存放
+
+#### TS 类型的定义
+
+使用 Typescript 意味着使用强类型，我们把业务实体中 TS 类型定义分两大类：`API类型`和`Entity类型`。
+
+- API 类型：指的是来自于后台 API 输入的类型，它们可能直接由 swagger 生成，或是机器生成。
+- Entity 类型：指的是本系统为业务实体建模而定义的类型，每个业务实体(resource)都会有定义。
+
+理想状况下，API 类型和 Entity 类型会保持一致，因为业务逻辑是同一套，但实际开发中，可能因为前后端并行开发、或者前后端视角不同而出现两者各表。
+
+> 为了充分的解耦，我们允许这种不一致，我们把 API 类型在源头就转化为 Entity 类型，而在本系统的代码逻辑中，不直接使用 API 类型，应当使用自已定义的 Entity 类型，以减少其它系统对本系统的影响。
 
 ---
 
