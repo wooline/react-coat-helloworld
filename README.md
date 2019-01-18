@@ -1,4 +1,8 @@
 - react-coat 同时支持`浏览器渲染(SPA)`和`服务器渲染(SSR)`，本 Demo 仅演示`浏览器渲染`，请先了解一下：[react-coat v4.0](https://github.com/wooline/react-coat)
+- [本 Demo 讨论提问专用贴](https://github.com/wooline/react-coat-helloworld/issues/1)
+- reac-coat 学习交流 QQ 群：**929696953**，有问题可以在群里问我
+
+---
 
 - react-coat4.0 推出之后，不少网友反映附带的 2 个 Demo 写得太复杂。主要问题是：
 
@@ -18,7 +22,7 @@ declare type RouterParser<T = any> = (nextRouter: T, prevRouter?: T) => T;
 
 - 为了循序渐进，在此重新将 Demo 拆分为三个：
 
-> [入手：Helloworld（本 demo）](https://github.com/wooline/react-coat-helloworld)
+> [入手：Helloworld（**本 demo**）](https://github.com/wooline/react-coat-helloworld)
 
 > [进阶：SPA(单页应用)](https://github.com/wooline/react-coat-spa-demo)
 
@@ -26,7 +30,7 @@ declare type RouterParser<T = any> = (nextRouter: T, prevRouter?: T) => T;
 
 ---
 
-# 本 Demo 为第一步：Helloworld
+# 本 Demo 为第一个：Helloworld
 
 ### 安装
 
