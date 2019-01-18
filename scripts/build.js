@@ -24,10 +24,16 @@ compiler.run((error, stats) => {
         colors: true,
         modules: false,
         excludeAssets: /\.(?!js|html)\w+$/,
+        warningsFilter: "[mini-css-extract-plugin]\nConflicting order between",
       })
     );
-    if (stats.hasErrors() || stats.hasWarnings()) {
-      process.exit(1);
+    if (stats.hasWarnings()) {
+      const statsJSON = stats.toJson();
+      // Ignore "Conflicting order between" warning, produced by "mini-css-extract-plugin"
+      const warnings = statsJSON.warnings.filter(_ => _.indexOf("[mini-css-extract-plugin]\nConflicting order between") < 0);
+      if (warnings.length > 0) {
+        process.exit(1);
+      }
     }
   }
 });

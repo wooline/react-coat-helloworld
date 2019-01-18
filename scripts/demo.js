@@ -45,4 +45,4 @@ const app = express();
 app.use("/", express.static(paths.distPath, {fallthrough: true}));
 app.use(devServer(appPackage.devServer.proxy));
 app.use(devMock(appPackage.devServer.mock, appPackage.devServer.proxy, true));
-app.listen(port, () => console.info(chalk`.....${new Date().toLocaleString()} starting {red SSR Server} on {green ${appPackage.devServer.url}/} \n`));
+app.listen(port, () => console.info(chalk`.....${new Date().toLocaleString()} starting {red Demo Server} on {green ${appPackage.devServer.url}/} \n`));

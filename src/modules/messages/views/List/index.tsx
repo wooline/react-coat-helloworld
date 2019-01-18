@@ -44,7 +44,7 @@ class Component extends React.PureComponent<Props> {
     if (listItems && listSearch) {
       return (
         <div className={`${ModuleNames.messages}-List`}>
-          <Search value={listSearch.title || ""} onClose={this.onSearchClose} onSearch={this.onSearch} visible={showSearch || listSearch.title !== null} />
+          <Search value={listSearch.title} onClose={this.onSearchClose} onSearch={this.onSearch} visible={showSearch} />
           <div className="list-items">
             {listItems.map(item => (
               <div key={item.id}>
