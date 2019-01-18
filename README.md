@@ -4,23 +4,7 @@
 
 ---
 
-- react-coat4.0 推出之后，不少网友反映附带的 2 个 Demo 写得太复杂。主要问题是：
-
-> 其一，路由封装太重。
-
-其实，框架本身并没有过度封装路由，只集成了`connected-react-router`，然后留了一个钩子：
-
-```JS
-declare type RouterParser<T = any> = (nextRouter: T, prevRouter?: T) => T;
-```
-
-可以看到 T 类型为 any，也就是留给用户自已定义，因为路由方案有很多种，并没有什么最佳实践，所以框架将这部分自由留给用户。
-
-> 其二，model 的继承太抽象。
-
-继承还是混合？对象式还是函数式？其实一直都是争议的话题，都有各自的优缺点，也没有什统一标准。所以框架本身也没有做这方面的限制，你可以选择继承，也可以选择混合，选择权在用户自已。
-
-- 为了循序渐进，在此重新将 Demo 拆分为三个：
+react-coat使用**Typescript**开发，集成**Redux**，由浅入深请看3个Demo：
 
 > [入手：Helloworld（**本 demo**）](https://github.com/wooline/react-coat-helloworld)
 
@@ -30,7 +14,7 @@ declare type RouterParser<T = any> = (nextRouter: T, prevRouter?: T) => T;
 
 ---
 
-# 本 Demo 为第一个：Helloworld
+## 第一站：Helloworld
 
 ### 安装
 
