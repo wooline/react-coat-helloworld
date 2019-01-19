@@ -1,6 +1,7 @@
 - react-coat 同时支持`浏览器渲染(SPA)`和`服务器渲染(SSR)`，本 Demo 仅演示`浏览器渲染`，请先了解一下：[react-coat v4.0](https://github.com/wooline/react-coat)
 - [本 Demo 讨论提问专用贴](https://github.com/wooline/react-coat-helloworld/issues/1)
 - reac-coat 学习交流 QQ 群：**929696953**，有问题可以在群里问我
+- **如果有错误或Bug欢迎批评指正，如果觉得还不错请别忘了给个Star >_<**
 
 ---
 
