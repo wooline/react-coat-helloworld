@@ -52,7 +52,7 @@ class Component extends React.PureComponent<Props> {
         },
       ],
     });
-    return (
+    return commentId ? (
       <div className={`${ModuleNames.comments}-Editor`}>
         <div className="input">
           <InputItem placeholder="我来说两句..." {...content} />
@@ -63,7 +63,7 @@ class Component extends React.PureComponent<Props> {
           </Button>
         </div>
       </div>
-    );
+    ) : null;
   }
 }
 
@@ -71,8 +71,8 @@ const mapStateToProps = (state: RootState) => {
   const model = state.comments;
   return {
     hasLogin: state.app.curUser!.hasLogin,
-    articleType: model.listSearch.articleType,
-    articleId: model.listSearch.articleId,
+    articleType: model.listSearch ? model.listSearch.articleType : "",
+    articleId: model.listSearch ? model.listSearch.articleId : "",
     commentId: model.itemDetail ? model.itemDetail.id : "",
   };
 };

@@ -8,7 +8,7 @@ import {defaultListSearch} from "./facade";
 
 // 定义本模块的State类型
 export interface State extends BaseModuleState {
-  listSearch: ListSearch;
+  listSearch?: ListSearch;
   listItems?: ListItem[];
   listSummary?: ListSummary;
   itemDetail?: ItemDetail;
@@ -17,9 +17,7 @@ export interface State extends BaseModuleState {
 class ModuleHandlers extends BaseModuleHandlers<State, RootState, ModuleNames> {
   constructor() {
     // 定义本模块State的初始值
-    const initState: State = {
-      listSearch: defaultListSearch,
-    };
+    const initState: State = {};
     super(initState);
   }
 
@@ -46,7 +44,7 @@ class ModuleHandlers extends BaseModuleHandlers<State, RootState, ModuleNames> {
   }
   @effect()
   public async searchList(options: Partial<ListSearch> = {}) {
-    const listSearch: ListSearch = {...this.state.listSearch, ...options};
+    const listSearch: ListSearch = {...(this.state.listSearch || defaultListSearch), ...options};
     const {listItems, listSummary} = await api.searchList(listSearch);
     this.updateState({listSearch, listItems, listSummary});
   }

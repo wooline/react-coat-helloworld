@@ -9,7 +9,7 @@ import {connect, DispatchProp} from "react-redux";
 import "./index.less";
 
 interface Props extends DispatchProp {
-  listSearch: ListSearch;
+  listSearch: ListSearch | undefined;
   listItems: ListItem[] | undefined;
   listSummary: ListSummary | undefined;
 }

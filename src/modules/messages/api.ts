@@ -2,7 +2,7 @@ import request from "common/request";
 import {ListItem, ListSearch, ListSummary} from "entity/message";
 
 export class API {
-  public searchList(listSearch: ListSearch): Promise<{listItems: ListItem[]; listSummary: ListSummary}> {
+  public searchList(listSearch: ListSearch) {
     listSearch = {...listSearch};
     if (!listSearch.title) {
       delete listSearch.title;
