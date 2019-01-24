@@ -488,5 +488,7 @@ const arr = pathname.match(/^\/photos\/(\d+)$/);
 
 > [进阶：SPA(单页应用)](https://github.com/wooline/react-coat-spa-demo)
 
+---
+
 - [本 Demo 讨论提问专用贴](https://github.com/wooline/react-coat-helloworld/issues/1)
 - reac-coat 学习交流 QQ 群：**929696953**，有问题可以在群里问我
