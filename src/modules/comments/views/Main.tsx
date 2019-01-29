@@ -2,9 +2,8 @@ import {RootState} from "modules";
 import {ModuleNames} from "modules/names";
 import * as React from "react";
 import {connect} from "react-redux";
-import DetailsView from "./Details";
 import Editor from "./Editor";
-import ListView from "./List";
+import {Details as DetailsView, List as ListView} from "./index";
 import "./Main.less";
 
 interface Props {
@@ -24,7 +23,7 @@ class Component extends React.PureComponent<Props> {
 
 const mapStateToProps = (state: RootState) => {
   return {
-    showDetail: Boolean(state.comments.itemDetail),
+    showDetail: Boolean(state.comments!.itemDetail),
   };
 };
 

@@ -2,7 +2,7 @@ import {RootState} from "modules";
 import * as React from "react";
 import {connect} from "react-redux";
 import {Route, Switch} from "react-router-dom";
-import ListView from "./List";
+import {List as ListView} from "./index";
 
 interface Props {
   pathname: string;

@@ -112,7 +112,7 @@ class Component extends React.PureComponent<Props, State> {
 }
 
 const mapStateToProps = (state: RootState) => {
-  const model = state.photos;
+  const model = state.photos!;
   return {
     listSearch: model.listSearch,
     itemDetail: model.itemDetail,

@@ -68,9 +68,9 @@ class Component extends React.PureComponent<Props> {
 }
 
 const mapStateToProps = (state: RootState) => {
-  const model = state.comments;
+  const model = state.comments!;
   return {
-    hasLogin: state.app.curUser!.hasLogin,
+    hasLogin: state.app!.curUser!.hasLogin,
     articleType: model.listSearch ? model.listSearch.articleType : "",
     articleId: model.listSearch ? model.listSearch.articleId : "",
     commentId: model.itemDetail ? model.itemDetail.id : "",

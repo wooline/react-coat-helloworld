@@ -22,22 +22,19 @@ export interface State extends BaseModuleState {
   };
 }
 
+// 定义本模块State的初始值
+const initState: State = {
+  projectConfig: null,
+  curUser: null,
+  startupStep: StartupStep.init,
+  loading: {
+    global: LoadingState.Stop,
+    login: LoadingState.Stop,
+  },
+};
+
 // 定义本模块的Handlers
 class ModuleHandlers extends BaseModuleHandlers<State, RootState, ModuleNames> {
-  constructor() {
-    // 定义本模块State的初始值
-    const initState: State = {
-      projectConfig: null,
-      curUser: null,
-      startupStep: StartupStep.init,
-      loading: {
-        global: LoadingState.Stop,
-        login: LoadingState.Stop,
-      },
-    };
-    super(initState);
-  }
-
   @reducer
   public putStartup(startupStep: StartupStep): State {
     return {...this.state, startupStep};
@@ -99,4 +96,4 @@ class ModuleHandlers extends BaseModuleHandlers<State, RootState, ModuleNames> {
 // 导出本模块的Actions
 export type ModuleActions = Actions<ModuleHandlers>;
 
-export default exportModel(ModuleNames.app, ModuleHandlers);
+export default exportModel(ModuleNames.app, ModuleHandlers, initState);

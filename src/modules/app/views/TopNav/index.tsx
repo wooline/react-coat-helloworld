@@ -36,9 +36,9 @@ class Component extends React.PureComponent<Props> {
 }
 const mapStateToProps = (state: RootState) => {
   return {
-    showSearch: Boolean(state.app.showSearch),
-    logoUrl: state.app.projectConfig!.logoUrl,
-    avatarUrl: state.app.curUser!.avatarUrl,
+    showSearch: Boolean(state.app!.showSearch),
+    logoUrl: state.app!.projectConfig!.logoUrl,
+    avatarUrl: state.app!.curUser!.avatarUrl,
   };
 };
 

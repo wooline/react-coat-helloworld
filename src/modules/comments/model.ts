@@ -14,13 +14,10 @@ export interface State extends BaseModuleState {
   itemDetail?: ItemDetail;
 }
 
-class ModuleHandlers extends BaseModuleHandlers<State, RootState, ModuleNames> {
-  constructor() {
-    // 定义本模块State的初始值
-    const initState: State = {};
-    super(initState);
-  }
+// 定义本模块State的初始值
+const initState: State = {};
 
+class ModuleHandlers extends BaseModuleHandlers<State, RootState, ModuleNames> {
   @reducer
   public putItemDetail(itemDetail?: ItemDetail): State {
     return {...this.state, itemDetail};
@@ -46,7 +43,7 @@ class ModuleHandlers extends BaseModuleHandlers<State, RootState, ModuleNames> {
   public async searchList(options: Partial<ListSearch> = {}) {
     const listSearch: ListSearch = {...(this.state.listSearch || defaultListSearch), ...options};
     const {listItems, listSummary} = await api.searchList(listSearch);
-    this.updateState({listSearch, listItems, listSummary});
+    this.updateState({listSearch, listItems, listSummary, itemDetail: undefined});
   }
   @effect()
   public async getItemDetail(itemDetailId: string) {
@@ -58,4 +55,4 @@ class ModuleHandlers extends BaseModuleHandlers<State, RootState, ModuleNames> {
 // 导出本模块的Actions
 export type ModuleActions = Actions<ModuleHandlers>;
 
-export default exportModel(ModuleNames.comments, ModuleHandlers);
+export default exportModel(ModuleNames.comments, ModuleHandlers, initState);

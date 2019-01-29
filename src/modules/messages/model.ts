@@ -3,7 +3,7 @@ import {equal} from "common/utils";
 import {ListItem, ListSearch, ListSummary} from "entity/message";
 import {RootState} from "modules";
 import {ModuleNames} from "modules/names";
-import {Actions, BaseModuleHandlers, BaseModuleState, effect, exportModel, LOCATION_CHANGE, RouterState} from "react-coat";
+import {Actions, BaseModuleHandlers, BaseModuleState, effect, exportModel, VIEW_INVALID} from "react-coat";
 import api from "./api";
 import {defaultListSearch} from "./facade";
 
@@ -14,12 +14,10 @@ export interface State extends BaseModuleState {
   listSummary?: ListSummary;
 }
 
+// 定义本模块State的初始值
+const initState: State = {};
+
 class ModuleHandlers extends BaseModuleHandlers<State, RootState, ModuleNames> {
-  constructor() {
-    // 定义本模块State的初始值
-    const initState: State = {};
-    super(initState);
-  }
   @effect()
   public async searchList(options: Partial<ListSearch> = {}) {
     const listSearch: ListSearch = {...(this.state.listSearch || defaultListSearch), ...options};
@@ -30,25 +28,15 @@ class ModuleHandlers extends BaseModuleHandlers<State, RootState, ModuleNames> {
   // 兼听路由变化的 action
   // 参数 null 表示不需要监控loading状态，searchList时会监控loading
   @effect(null)
-  protected async [LOCATION_CHANGE](router: RouterState) {
-    const {pathname} = router.location;
-    if (pathname.indexOf("/messages") === 0) {
-      await this.parseRouter();
-    }
-  }
-
-  // 兼听自已初始化的 action
-  @effect(null)
-  protected async [ModuleNames.messages + "/INIT"]() {
-    await this.parseRouter();
-  }
-
-  private async parseRouter() {
-    const {search, hash} = this.rootState.router.location;
-    const forceRefresh = isForceRefresh(hash);
-    const listSearch = parseQuery("search", search, defaultListSearch);
-    if (forceRefresh || (forceRefresh === null && !equal(this.state.listSearch, listSearch))) {
-      await this.dispatch(this.actions.searchList(listSearch));
+  protected async [VIEW_INVALID]() {
+    const views = this.rootState.views;
+    if (views.messages && views.messages.List) {
+      const {search, hash} = this.rootState.router.location;
+      const forceRefresh = isForceRefresh(hash);
+      const listSearch = parseQuery("search", search, defaultListSearch);
+      if (forceRefresh || (forceRefresh === null && !equal(this.state.listSearch, listSearch))) {
+        await this.dispatch(this.actions.searchList(listSearch));
+      }
     }
   }
 }
@@ -56,4 +44,4 @@ class ModuleHandlers extends BaseModuleHandlers<State, RootState, ModuleNames> {
 // 导出本模块的Actions
 export type ModuleActions = Actions<ModuleHandlers>;
 
-export default exportModel(ModuleNames.messages, ModuleHandlers);
+export default exportModel(ModuleNames.messages, ModuleHandlers, initState);

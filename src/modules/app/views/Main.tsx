@@ -66,7 +66,7 @@ class Component extends React.PureComponent<Props> {
 }
 // todo document title处理
 const mapStateToProps = (state: RootState) => {
-  const app = state.app;
+  const app = state.app!;
   return {
     showLoginPop: Boolean(app.showLoginPop && !app.curUser!.hasLogin),
     showNotFoundPop: Boolean(app.showNotFoundPop),

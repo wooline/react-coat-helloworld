@@ -1,5 +1,9 @@
-- react-coat 同时支持`浏览器渲染(SPA)`和`服务器渲染(SSR)`，本 Demo 仅演示`浏览器渲染`，请先了解一下：[react-coat v4.0](https://github.com/wooline/react-coat)
+- react-coat 同时支持`浏览器渲染(SPA)`和`服务器渲染(SSR)`，本 Demo 仅演示`浏览器渲染`，请先了解一下：[react-coat v4.1](https://github.com/wooline/react-coat)
 - **如果有错误或 Bug 欢迎批评指正，如果觉得还不错请别忘了给个 Star >\_<**
+
+## 升级 react-coat 至 4.1
+
+react-coat 4.1 发布，使用泛型自动推断，进一步精简代码，升级详情见 [react-coat v4.1](https://github.com/wooline/react-coat)
 
 ---
 
@@ -333,17 +337,7 @@ export const moduleGetter = {
 
 export type ModuleGetter = ModulesDefined<typeof moduleGetter>; // 验证一下是否有模块忘了配置
 
-// 定义整站Module States
-interface States {
-  [ModuleNames.app]: AppState;
-  [ModuleNames.photos]: PhotosState;
-  [ModuleNames.videos]: VideosState;
-  [ModuleNames.messages]: MessagesState;
-  [ModuleNames.comments]: CommentsState;
-}
-
-// 定义整站的Root State
-export type RootState = BaseState & ModulesDefined<States>; // 验证一下是否有模块忘了配置
+export type RootState = BaseState<ModuleGetter>;
 ```
 
 ### 路由和加载
@@ -467,10 +461,6 @@ module 的划分不仅体现在工程目录上，而体现在 Redux Store 中：
 > 看样子，路由会越来越复杂，到目前为止，我们还没有在 TS 中很好的管理路由参数，拼接 URL 时没有做 TS 类型的校验。对于 pathname 我们都是直接用字符串写死在程序中，比如：
 
 ```JS
-if(pathname === "/photos"){
-  ....
-}
-
 const arr = pathname.match(/^\/photos\/(\d+)$/);
 ```
 

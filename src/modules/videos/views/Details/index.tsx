@@ -75,7 +75,7 @@ class Component extends React.PureComponent<Props> {
 }
 
 const mapStateToProps = (state: RootState) => {
-  const model = state.videos;
+  const model = state.videos!;
   return {
     listSearch: model.listSearch,
     itemDetail: model.itemDetail,

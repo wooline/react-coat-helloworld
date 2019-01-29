@@ -79,7 +79,7 @@ class Component extends React.PureComponent<Props> {
 
 const mapStateToProps = (state: RootState) => {
   return {
-    itemDetail: state.comments.itemDetail,
+    itemDetail: state.comments!.itemDetail,
   };
 };
 
