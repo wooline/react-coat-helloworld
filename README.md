@@ -385,6 +385,10 @@ module 的划分不仅体现在工程目录上，而体现在 Redux Store 中：
     },
     action: 'PUSH'
   },
+  views: { // 框架自动生成，当前展示了哪些 view
+    app: {Main:1},
+    photos:{Main:1, List:1}
+  },
   app: {...}, // app ModuleState
   photos: { // photos ModuleState
     isModule: true, // 框架自动生成，标明该节点为一个ModuleState
