@@ -8,7 +8,8 @@
     "build": "cross-env NODE_ENV=production node scripts/build.js",
     "prod-express-demo": "npm run build && node scripts/demo.js",
     "gen-icon": "node scripts/gen-icon.js",
-    "demo-build": "cross-env NODE_ENV=production WEBSITE=demo node scripts/build.js"
+    "demo-build": "cross-env NODE_ENV=production WEBSITE=demo node scripts/build.js",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -69,7 +70,7 @@
     "deep-extend": "~0.6.0",
     "rc-form": "~2.2.7",
     "react-coat": "~4.1.0",
-    "react-coat-pkg": "~4.0.1",
+    "react-coat-pkg": "~4.0.0",
     "ts-import-plugin": "~1.5.5"
   },
   "browserslist": [
