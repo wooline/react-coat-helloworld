@@ -61,16 +61,16 @@
     "yargs": "^12.0.0"
   },
   "devDependencies": {
-    "react-coat-dev-utils": "^1.0.1",
-    "react-coat-dev-pkg": "^1.0.2",
-    "typescript": "^3.2.2"
+    "react-coat-dev-utils": "~1.0.1",
+    "react-coat-dev-pkg": "~1.0.2",
+    "typescript": "~3.3.3"
   },
   "dependencies": {
     "antd-mobile": "~2.2.6",
     "deep-extend": "~0.6.0",
     "rc-form": "~2.2.7",
-    "react-coat": "~4.1.0",
-    "react-coat-pkg": "~4.0.0",
+    "react-coat": "~4.1.3",
+    "react-coat-pkg": "~4.1.1",
     "ts-import-plugin": "~1.5.5"
   },
   "browserslist": [
