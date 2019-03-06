@@ -1,19 +1,15 @@
-- react-coat 同时支持`浏览器渲染(SPA)`和`服务器渲染(SSR)`，本 Demo 仅演示`浏览器渲染`，请先了解一下：[react-coat v4.1](https://github.com/wooline/react-coat)
+- react-coat 同时支持`浏览器渲染(SPA)`和`服务器渲染(SSR)`，本 Demo 仅演示`浏览器渲染`，请先了解一下：[react-coat](https://github.com/wooline/react-coat)
 - **如果有错误或 Bug 欢迎批评指正，如果觉得还不错请别忘了给个 Star >\_<**
-
-## 升级 react-coat 至 4.1
-
-react-coat 4.1 发布，使用泛型自动推断，进一步精简代码，升级详情见 [react-coat v4.1](https://github.com/wooline/react-coat)
 
 ---
 
 react-coat 使用**Typescript**开发，集成**Redux**，由浅入深请看 3 个 Demo：
 
-> [入手：Helloworld（**本 demo**）](https://github.com/wooline/react-coat-helloworld)
+> [**SPA(单页) Helloworld**](https://github.com/wooline/react-coat-helloworld)
 
-> [进阶：SPA(单页应用)](https://github.com/wooline/react-coat-spa-demo)
+> [SPA(单页) 进一步优化](https://github.com/wooline/react-coat-spa-demo)
 
-> [升级：SPA(单页应用)+SSR(服务器渲染)](https://github.com/wooline/react-coat-ssr-demo)
+> [SPA(单页) + SSR(服务器渲染)](https://github.com/wooline/react-coat-ssr-demo)
 
 ---
 
