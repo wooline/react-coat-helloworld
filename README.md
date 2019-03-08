@@ -1,4 +1,5 @@
 - react-coat 同时支持`浏览器渲染(SPA)`和`服务器渲染(SSR)`，本 Demo 仅演示`浏览器渲染`，请先了解一下：[react-coat](https://github.com/wooline/react-coat)
+- why react-coat？：[https://zhuanlan.zhihu.com/p/58583636](https://zhuanlan.zhihu.com/p/58583636)
 - **如果有错误或 Bug 欢迎批评指正，如果觉得还不错请别忘了给个 Star >\_<**
 
 ---
@@ -44,18 +45,9 @@ npm install
 - 采用 editorconfig > prettier 作统一的风格配置，建议使用 vscode 作为 IDE，并安装 prettier 插件以自动格式化
 - 采用 tslint、eslint、stylelint 作代码检查
 
-#### 约定规则静态检查
-
-react-coat 中很多是用约定代替了配置，但如果开发者粗心大意违返了约定，将导致程序出现错误，为了提前感知这些违返约定，本 demo 作了一些静态代码扫描 check 操作。目前仅支持少量规则，更多更严格 check 将在后续补充。
-目前支持的有：
-
-- @reducer 装饰器修饰的方法必须返回 State 类型
-- @effect 装饰器修饰的方法必须是 async 函数
-- 在 ModuleActionHandlers 中，所有 public 方法必须使用@reducer 或 @effect 装饰，否则请使用 protected 或 private
-
 #### PeerDependencies
 
-开发环境需要很多的 dependencies，你可以自行安装特定版本，如果特殊要求，建议本站提供的 **react-coat-pkg** 以及 **react-coat-dev-pkg**，它们已经包含了绝大部分 dependencies。
+开发环境需要很多的 dependencies，你可以自行安装特定版本，如无特殊要求，建议本站提供的 **react-coat-pkg** 以及 **react-coat-dev-pkg**，它们已经包含了绝大部分 dependencies。
 
 #### Mock 服务器
 
