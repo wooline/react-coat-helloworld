@@ -66,8 +66,8 @@ class ModuleHandlers extends BaseModuleHandlers<State, RootState, ModuleNames> {
     }
   }
 
-  // uncatched错误会触发@@framework/ERROR，兼听并发送给后台
-  // 兼听外部模块的Action，不需要手动触发，所以请使用protected或private
+  // uncatched错误会触发@@framework/ERROR，监听并发送给后台
+  // 监听外部模块的Action，不需要手动触发，所以请使用protected或private
   @effect(null) // 不需要loading，设置为null
   protected async [ERROR](error: CustomError) {
     if (error.code === "401") {
@@ -81,7 +81,7 @@ class ModuleHandlers extends BaseModuleHandlers<State, RootState, ModuleNames> {
       await settingsService.api.reportError(error);
     }
   }
-  // 兼听自已的INIT Action，做一些异步数据请求，不需要手动触发，所以请使用protected或private
+  // 监听自已的INIT Action，做一些异步数据请求，不需要手动触发，所以请使用protected或private
   @effect()
   protected async [ModuleNames.app + "/INIT"]() {
     const [projectConfig, curUser] = await Promise.all([settingsService.api.getSettings(), sessionService.api.getCurUser()]);
